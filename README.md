@@ -4,6 +4,20 @@ The official code base for reproducing self-training in **[Self-Training Large L
 
 ---
 
+### Repository Layout
+
+- `main.py` – CLI entry point that parses arguments and launches training.
+- `core_po/`
+  - `arguments.py` – dataclass for CLI/configuration options.
+  - `data.py` – dataset loaders for GSM8K, ARC, MATH, GPQA with rank-aware slicing.
+  - `generation.py` – prompt templates, response sampling, preference construction.
+  - `judge.py` – confidence estimator for reasoning and answers.
+  - `models.py` – helpers to load LoRA-wrapped Llama 3.1 checkpoints.
+  - `trainer.py` – LoRA/DPO training loop, checkpointing, and optimizer wiring.
+  - `__init__.py` – exposes `ScriptArguments` and `run_training`.
+
+---
+
 ### Quick Start for Training
 
 The training requires four NVIDIA A100 GPUs.

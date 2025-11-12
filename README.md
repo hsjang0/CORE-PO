@@ -2,19 +2,15 @@
 
 The official code base for reproducing self-training in **[Self-Training Large Language Models with Confident Reasoning](https://aclanthology.org/2025.findings-emnlp.806/)**. The training code involves (1) sampling math/science questions, (2) generating multiple answers with a LoRA-tuned Llama 3.1, (3) scoring them with an internal judge, and (4) running Direct Preference Optimization (DPO).
 
----
-
-### Repository Layout
-
-- `main.py` – CLI entry point that parses arguments and launches training.
+- `main.py`
 - `core_po/`
-  - `arguments.py` – dataclass for CLI/configuration options.
-  - `data.py` – dataset loaders for GSM8K, ARC, MATH, GPQA with rank-aware slicing.
-  - `generation.py` – prompt templates, response sampling, preference construction.
-  - `judge.py` – confidence estimator for reasoning and answers.
-  - `models.py` – helpers to load LoRA-wrapped Llama 3.1 checkpoints.
-  - `trainer.py` – LoRA/DPO training loop, checkpointing, and optimizer wiring.
-  - `__init__.py` – exposes `ScriptArguments` and `run_training`.
+  - `arguments.py` 
+  - `__init__.py` 
+  - `data.py` – loaders for GSM8K, ARC, MATH, and GPQA with rank-aware sharding.
+  - `generation.py` – prompt templates and sampling.
+  - `judge.py` – confidence scorer that evaluates reasoning and final answers.
+  - `models.py` – loader of LoRA-adapted Llama 3.1 weights (8-bit or bf16).
+  - `trainer.py` – CORE-PO DPO training loop
 
 ---
 

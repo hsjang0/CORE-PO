@@ -2,10 +2,6 @@
 
 The official code base for reproducing self-training in **[Self-Training Large Language Models with Confident Reasoning](https://aclanthology.org/2025.findings-emnlp.806/)**. The training code involves (1) sampling math/science questions, (2) generating multiple answers with a LoRA-tuned Llama 3.1, (3) scoring them with an internal judge, and (4) running Direct Preference Optimization (DPO).
 
-- `CORE_PO.py` – main training loop, LoRA setup, DPO updates, checkpoint saving.
-- `training_data.py` – pulls GSM8K, ARC-Challenge, MATH, GPQA with rank-based sharding.
-- `utils.py` – prompt templates, judge class, generation helpers, Llama loader.
-
 ---
 
 ### Quick Start for Training
@@ -13,7 +9,7 @@ The official code base for reproducing self-training in **[Self-Training Large L
 The training requires four NVIDIA A100 GPUs.
 
 ```bash
-accelerate launch --num_processes 4 CORE_PO.py \
+accelerate launch --num_processes 4 main.py \
   --save_directory ./dpo_saved \
   --save_name ours_run \
   --learning_rate 5e-6 \

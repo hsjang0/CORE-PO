@@ -1,9 +1,9 @@
 ## Self-Training Large Language Models with Confident Reasoning
 
-Minimal code to reproduce the pipeline from **[Self-Training Large Language Models with Confident Reasoning](https://aclanthology.org/2025.findings-emnlp.806/)**. `CORE_PO.py` samples math/science questions, generates multiple answers with a LoRA-tuned Llama 3.1, scores them with an internal judge, and runs Direct Preference Optimization.
+The official code base for reproducing self-training in **[Self-Training Large Language Models with Confident Reasoning](https://aclanthology.org/2025.findings-emnlp.806/)**. The training code involves (1) sampling math/science questions, (2) generating multiple answers with a LoRA-tuned Llama 3.1, (3) scoring them with an internal judge, and (4) running Direct Preference Optimization (DPO).
 
 - `CORE_PO.py` – main training loop, LoRA setup, DPO updates, checkpoint saving.
-- `training_data.py` – pulls GSM8K, ARC-Challenge, DigitalLearningGmbH MATH, GPQA with rank-based sharding.
+- `training_data.py` – pulls GSM8K, ARC-Challenge, MATH, GPQA with rank-based sharding.
 - `utils.py` – prompt templates, judge class, generation helpers, Llama loader.
 
 ---
